@@ -1,0 +1,49 @@
+name: Surveyor
+version: @version@
+main: com.github.rnlin430.surveyor.SurveyorPlugin
+api-version: 1.15
+softdepend: [GreafPrevention]
+authors: [rnlin]
+description: Search the position by GreafPrevention protection number and add the concept of Adress
+
+commands:
+  search:
+    description: display coordinates of the protection you specified.
+    aliases: [sch]
+    usage: /<command> <number>
+    permission: surbeyor.command.search
+    permission-message: You don't have the permission <permission>.
+  surveyor:
+    aliases: [sv]
+    usage: /<command>
+    permission: surbeyor.command.surbeyor
+    permission-message: You don't have the permission <permission>.
+    description: This command is a base command.
+
+permissions:
+  surbeyor.command.*:
+    description: Allows you to use all surbeyor command.
+    default: op
+    children:
+      surbeyor.command.search: op
+      surbryor.command.surveyor: op
+  surbeyor.command.search:
+    description: Allows you to use search command.
+    default: op
+  surbeyor.command.surveyor:
+    description: Allows you to use surbeyor command.
+    default: op
+
+  surbeyor.command.surveyor.*:
+    description: Allows you to use surbeyor all command.
+    default: op
+    children:
+      surbeyor.command.surveyor.help: op
+      surbeyor.command.surveyor.permission: op
+  surbeyor.command.surveyor.help:
+    default: op
+    description: Allows you to use all surbeyor command.
+  surbeyor.command.surveyor.permission:
+    default: op
+    description: Allows you to use all permission command.
+
