@@ -18,7 +18,7 @@ public class ConsoleLog {
     private final JavaPlugin plugin;
     private final String pluginName;
 
-    ConsoleLog(@NotNull JavaPlugin plugin) {
+    public ConsoleLog(@NotNull JavaPlugin plugin) {
         this.plugin = plugin;
         this.pluginName = plugin.getName();
     }

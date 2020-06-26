@@ -2,38 +2,40 @@ package com.github.rnlin430.rnlibrary;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.plugin.Plugin;
 
 public class PlayerMessage {
-    private static String PLUGIN_NAME = null;
-    private static boolean isDebugMassage = true;
+    private String pluginname = null;
+    private boolean isDebugMassage = true;
+    private Plugin  plugin;
+
+    public PlayerMessage(Plugin p) {
+        this.plugin = p;
+        this.pluginname = plugin.getDescription().getName();
+    }
 
 
-    public static void sendDescription(final CommandSender sender, final String message) {
+    public void sendDescription(final CommandSender sender, final String message) {
         sender.sendMessage(ChatColor.AQUA + message);
     }
-    public static void sendInfo(final CommandSender sender, final String message) {
-        sender.sendMessage(ChatColor.AQUA + "[" + PLUGIN_NAME + "]" + ChatColor.AQUA + message);
+    public void sendInfo(final CommandSender sender, final String message) {
+        sender.sendMessage(ChatColor.AQUA + "[" + pluginname + "]" + ChatColor.AQUA + message);
     }
 
-    public static void debugMessage(final CommandSender sender, final String message) {
+    public void debugMessage(final CommandSender sender, final String message) {
         if(!isDebugMassage) return;
         sender.sendMessage("[Debug] " + ChatColor.GRAY + message);
     }
 
-    public static void warningMessage(final CommandSender sender, final String message) {
+    public void warningMessage(final CommandSender sender, final String message) {
         sender.sendMessage(ChatColor.RED + message);
     }
 
-    public static void cautionMessage(final CommandSender sender, final String message) {
+    public void cautionMessage(final CommandSender sender, final String message) {
         sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + message);
     }
 
-
-    public static void setPluginName(final String name) {
-        PLUGIN_NAME = name;
-    }
-
-    public static void activateDebugMassage(final boolean b) {
+    public void activateDebugMassage(final boolean b) {
         isDebugMassage = b;
     }
 }
