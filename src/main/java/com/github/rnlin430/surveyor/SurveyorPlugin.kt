@@ -9,8 +9,13 @@ class SurveyorPlugin : JavaPlugin() {
     val commandList: MutableList<String> = mutableListOf();
     val console: ConsoleLog = ConsoleLog(this)
 
+    companion object {
+        lateinit var instance: SurveyorPlugin
+    }
+
     override fun onEnable() {
         registerCommands()
+        instance = this
     }
     override fun onDisable() {}
 
@@ -21,12 +26,9 @@ class SurveyorPlugin : JavaPlugin() {
         for (c in commands) {
             com = getCommand(c.key)!!
             if (com == null) {
-                logger.info("\u001B[31m*--=============================WARNING============================--*\u001B[0m")
-                logger.info("\u001B[31mコマンド ${c.key} が登録されませんでした。\u001B[0m")
-                logger.info("\u001B[31m*--================================================================--*\u001B[0m")
+                console.warnInfo(arrayOf("\u001B[31mコマンド ${c.key} が登録されませんでした。\u001B[0m"))
                 continue
             }
-            console.
             com.setExecutor(clObj)
             commandList.add(c.key)
         }

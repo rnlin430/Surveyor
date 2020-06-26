@@ -20,39 +20,39 @@ public class ConsoleLog {
 
     public ConsoleLog(@NotNull JavaPlugin plugin) {
         this.plugin = plugin;
-        this.pluginName = plugin.getName();
+        this.pluginName = plugin.getDescription().getName();
     }
 
-    public void writeLine(@Nullable String text) { System.out.println(end + text + end); }
-    public void sendCaution(@Nullable String text) { System.out.println("[CAUTION] " + yellow + text + end); }
-    public void sendWarning(@Nullable String text) { System.out.println("[WARNING] " + red + text + end); }
-    public void sendDescription(@Nullable String text) { System.out.println("[INFO] " + cyan + text + end); }
-    public void sendDebugMessage(@Nullable String text) { System.out.println("[DEBUG] " + pink + text + end); }
+    public void writeLine(@Nullable String text) { plugin.getLogger().info(end + text + end); }
+    public void sendCaution(@Nullable String text) { plugin.getLogger().info("[CAUTION] " + yellow + text + end); }
+    public void sendWarning(@Nullable String text) { plugin.getLogger().info("[WARNING] " + red + text + end); }
+    public void sendDescription(@Nullable String text) { plugin.getLogger().info("[INFO] " + cyan + text + end); }
+    public void sendDebugMessage(@Nullable String text) { plugin.getLogger().info("[DEBUG] " + pink + text + end); }
 
     public void warnInfo(@Nullable String[] messages) {
-        plugin.getLogger().info(red + "*--============================== WARNING =============================--*" + end);
-        for (String mg : messages) plugin.getLogger().info(red +  mg + end);
-        short length = (short)pluginName.length();
+        System.out.println(red + "*--============================== WARNING =============================--*" + end);
+        for (String mg : messages) System.out.println(red +  mg + end);
+        byte length = (byte)pluginName.length();
         byte width = 68;
         if (length > width) {
-            plugin.getLogger().info(red + "*--"+ pluginName + "--*" + end);
+            System.out.println(red + "---"+ pluginName + "---" + end);
             return;
         }
         StringBuffer sb = new StringBuffer();
-        byte temp = (byte) (length - width);
+        byte temp = (byte) (width - length);
         if ((temp & 0x01) == 0x01) {
             temp++;
         }
-        temp <<= 2;
+        temp >>= 1;
         for (short i = 0; i < temp; i++) {
             sb.append('=');
         }
-        sb.append(messages);
+        sb.append("   " + pluginName + "   ");
         for (short i = 0; i < temp; i++) {
             sb.append('=');
         }
         String result = new String(sb);
-        plugin.getLogger().info(red + result + end);
+        System.out.println(red + result + end);
     }
 
     @NotNull

@@ -10,14 +10,16 @@ class CommandListener(surveyorPlugin: SurveyorPlugin) : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
 
         // search
-        if (command.name.equals(plugin.CommandList[0], true)) {
+        if (command.name.equals(plugin.commandList[0], true)) {
+
 
         }
         // surveyor
-        else if (command.name.equals(plugin.CommandList[1], true)) {
+        else if (command.name.equals(plugin.commandList[1], true)) {
 
         }
         TODO("Not yet implemented")
+        return true
     }
-
 }
+
