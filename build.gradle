@@ -13,7 +13,7 @@ idea {
 
 group = 'com.github.rnlin430.surveyor'
 version = '0.0.1-SNAPSHOT'
-def pluginsPath = "G:\\minecraftserver\\Spigot1.15.2\\plugins"
+String pluginsPath = "G:\\minecraftserver\\Spigot1.15.2\\plugins"
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
@@ -27,6 +27,9 @@ repositories {
     maven {
         name = 'sonatype'
         url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+    maven {
+        url = 'https://jitpack.io'
     }
 }
 
@@ -73,7 +76,8 @@ configurations {
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.15.2-R0.1-SNAPSHOT'
     embed "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    compile fileTree(dir: 'lib', include: 'GreafPrevention.jar')
+    implementation 'com.github.TechFortress:griefprevention:16.13.0'
+//    compile fileTree(dir: 'lib', include: 'GreafPrevention.jar')
 }
 
 processResources {
