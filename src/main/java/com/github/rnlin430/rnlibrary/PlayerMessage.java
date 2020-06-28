@@ -24,15 +24,15 @@ public class PlayerMessage {
 
     public void debugMessage(final CommandSender sender, final String message) {
         if(!isDebugMassage) return;
-        sender.sendMessage("[Debug] " + ChatColor.GRAY + message);
+        sender.sendMessage("[" + pluginname + "] " + "[DEBUG] " + ChatColor.GRAY + message);
     }
 
     public void warningMessage(final CommandSender sender, final String message) {
-        sender.sendMessage(ChatColor.RED + message);
+        sender.sendMessage("[" + pluginname + "] " + ChatColor.RED + message);
     }
 
     public void cautionMessage(final CommandSender sender, final String message) {
-        sender.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + message);
+        sender.sendMessage("[" + pluginname + "] " + ChatColor.YELLOW + "" + ChatColor.BOLD + message);
     }
 
     public void activateDebugMassage(final boolean b) {

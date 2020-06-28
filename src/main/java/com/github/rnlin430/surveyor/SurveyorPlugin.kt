@@ -1,6 +1,7 @@
 package com.github.rnlin430.surveyor
 
 import com.github.rnlin430.rnlibrary.ConsoleLog
+import com.github.rnlin430.rnlibrary.PlayerMessage
 import org.bukkit.command.PluginCommand
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -8,6 +9,7 @@ class SurveyorPlugin : JavaPlugin() {
 
     val commandList: MutableList<String> = mutableListOf();
     val console: ConsoleLog = ConsoleLog(this)
+    val pmsg: PlayerMessage = PlayerMessage(this)
 
     companion object {
         lateinit var instance: SurveyorPlugin
