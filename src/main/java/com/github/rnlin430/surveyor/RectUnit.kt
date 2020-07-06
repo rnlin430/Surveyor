@@ -1,19 +1,29 @@
 package com.github.rnlin430.surveyor
 
+import com.github.rnlin430.rnlibrary.Region
+import org.bukkit.World
+
 /**
  * 矩形の領域の最小単位
  */
 open class RectUnit(
-        val address: String,
-        val id:Int,
-        val fromX: Int,
-        val fromZ: Int,
-        val toX: Int,
-        val toZ: Int) : IAddress {
+        override val addressName: String,
+        override val id: Int,
+        override val fromX: Int,
+        override val fromZ: Int,
+        override val toX: Int,
+        override val toZ: Int,
+        override val world: World) : IAddress {
 
-    override fun getCenterLocation(): List<Float> {
-        val x: Float = (fromX + toX).toFloat() / 2
-        val z = (fromZ + toZ).toFloat() / 2
-        return listOf(x, z)
-    }
+    override val fromY = 0
+    override val toY = 0
+    override val centerLocation: List<Double>
+        get() {
+            val x: Double = (fromX + toX).toDouble() / 2
+            val z: Double = (fromZ + toZ).toDouble() / 2
+            return listOf(x, z)
+        }
+    val region: Region = Region(
+            fromX.toDouble(),fromY.toDouble(), fromZ.toDouble(), toX.toDouble(), toY.toDouble(), toZ.toDouble(), world)
+
 }
