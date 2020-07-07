@@ -4,6 +4,7 @@ import com.github.rnlin430.rnlibrary.ConsoleLog
 import com.github.rnlin430.rnlibrary.PlayerMessage
 import org.bukkit.command.PluginCommand
 import org.bukkit.plugin.java.JavaPlugin
+import kotlin.TODO as TODO1
 
 class SurveyorPlugin : JavaPlugin() {
 
@@ -12,12 +13,18 @@ class SurveyorPlugin : JavaPlugin() {
     val pmsg: PlayerMessage = PlayerMessage(this)
 
     companion object {
-        lateinit var instance: SurveyorPlugin
+        @JvmStatic
+        private lateinit var instance: SurveyorPlugin
+        fun getInstance(): SurveyorPlugin {
+            return instance
+        }
     }
 
+
     override fun onEnable() {
-        registerCommands()
         instance = this
+        registerCommands()
+        EventListener()
     }
     override fun onDisable() {}
 

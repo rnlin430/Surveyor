@@ -14,10 +14,10 @@ public class PlayerMessage {
         this.pluginname = plugin.getDescription().getName();
     }
 
-
     public void sendDescription(final CommandSender sender, final String message) {
         sender.sendMessage(ChatColor.AQUA + message);
     }
+
     public void sendInfo(final CommandSender sender, final String message) {
         sender.sendMessage(ChatColor.AQUA + "[" + pluginname + "]" + ChatColor.AQUA + message);
     }
@@ -37,5 +37,13 @@ public class PlayerMessage {
 
     public void activateDebugMassage(final boolean b) {
         isDebugMassage = b;
+    }
+
+    public void broadcast(final String message, final String permission) {
+        plugin.getServer().broadcast("[" + pluginname + "] " + message, permission);
+    }
+
+    public void broadcast(final String message) {
+        plugin.getServer().broadcastMessage("[" + pluginname + "] " + message);
     }
 }
